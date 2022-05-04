@@ -7,7 +7,6 @@ const playerNumber = 4;
 //@access public
 router.get("/start", (req, res) => {
   const data = {};
-  const iteration = {};
   const player = {};
   const score = {};
   try {
@@ -16,6 +15,7 @@ router.get("/start", (req, res) => {
         player["player " + (i + 1)] = calculate();
         score["player " + (i + 1)] = {};
       }
+
       for (let i = 0; i < playerNumber; i++) {
         for (let j = 0; j < playerNumber; j++) {
           if (i != j) {
@@ -30,8 +30,12 @@ router.get("/start", (req, res) => {
           }
         }
       }
-      //   console.log(JSON.stringify(data));
-      data["iteration" + (iter + 1)] = score;
+      data["iteration " + (iter + 1)] = {
+        "players' action": player,
+
+        scores: score,
+      };
+      //   data["iteration" + (iter + 1)] = score;
     }
     res.status(200).json({ data });
   } catch (err) {
