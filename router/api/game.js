@@ -35,15 +35,11 @@ router.get("/start", (req, res) => {
 
         scores: score,
       };
-      //   data["iteration" + (iter + 1)] = score;
     }
     res.status(200).json({ data });
   } catch (err) {
-    // console.log(JSON.stringify(score));
     console.log(err);
     res.status(500).send("Internal Server error");
   }
-
-  //   console.log(JSON.stringify(score));
 });
 module.exports = { router };
